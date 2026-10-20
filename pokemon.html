@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Pokédex · Detalle</title>
+  <meta name="description" content="Ficha completa de cada Pokémon: sprite animado, tipos, stats, habilidades y evoluciones." />
+  <meta name="theme-color" content="#e3350d" />
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="icons/icon-96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Pokédex" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-interna">
+      <a class="btn-volver" href="index.html" aria-label="Volver a la lista"><span id="flecha" aria-hidden="true"></span></a>
+      <img class="logo" src="icons/icon-96.png" alt="" />
+      <h1>Pokédex</h1>
+      <button id="btn-instalar" class="btn-instalar" type="button" hidden></button>
+
+      <div class="buscador">
+        <svg class="icono-buscar" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <input
+          id="buscador"
+          type="search"
+          placeholder="Buscar Pokémon"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Buscar Pokémon por nombre"
+        />
+        <button id="btn-limpiar" class="btn-limpiar" type="button" aria-label="Limpiar búsqueda" hidden>&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="detalle">
+    <p id="estado" class="estado" role="status">Cargando ficha…</p>
+
+    <article id="ficha" class="ficha" hidden></article>
+
+    <section class="seccion" id="seccion-evoluciones" hidden>
+      <h3>Línea evolutiva</h3>
+      <div id="evoluciones" class="evoluciones"></div>
+    </section>
+  </main>
+
+  <script src="detalle.js"></script>
+  <script src="install.js"></script>
+</body>
+</html>

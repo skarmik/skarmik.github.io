@@ -60,7 +60,9 @@ async function cargar() {
 
 function crearTarjeta(p) {
   const li = document.createElement('li');
-  li.className = 'tarjeta';
+  const a = document.createElement('a');
+  a.className = 'tarjeta';
+  a.href = 'pokemon.html?id=' + p.id;
 
   const img = document.createElement('img');
   img.loading = 'lazy';
@@ -83,7 +85,8 @@ function crearTarjeta(p) {
   nombre.className = 'nombre';
   nombre.textContent = p.nombre;
 
-  li.append(img, num, nombre);
+  a.append(img, num, nombre);
+  li.append(a);
   return li;
 }
 
@@ -115,6 +118,7 @@ function pintar() {
 
   configurarObservador();
   pintarMas();
+  filtrar();
 }
 
 function configurarObservador() {
@@ -177,5 +181,8 @@ if ('serviceWorker' in navigator) {
 
 lista.replaceChildren();
 for (let i = 0; i < TANDA_INICIAL; i++) lista.appendChild(crearEsqueleto());
+
+const qInicial = new URLSearchParams(location.hash.slice(1)).get('q');
+if (qInicial) buscador.value = qInicial;
 
 cargar();

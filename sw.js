@@ -1,11 +1,14 @@
-const VERSION = 'pokedex-v3';
+const VERSION = 'pokedex-v11';
 const CACHE = VERSION + '-cache';
 
 const ARCHIVOS = [
   './',
   './index.html',
+  './pokemon.html',
   './styles.css',
   './app.js',
+  './detalle.js',
+  './install.js',
   './manifest.json',
   './fonts/pkmn-rbygsc.ttf',
   './icons/icon-192.png',
@@ -16,7 +19,9 @@ self.addEventListener('install', (evento) => {
   evento.waitUntil(
     caches
       .open(CACHE)
-      .then((cache) => cache.addAll(ARCHIVOS))
+      .then((cache) =>
+        cache.addAll(ARCHIVOS.map((a) => new Request(a, { cache: 'reload' })))
+      )
       .then(() => self.skipWaiting())
   );
 });
